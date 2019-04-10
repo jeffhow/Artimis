@@ -1,0 +1,30 @@
+{% extends 'app/bootstrap.html' %}
+
+{% load bootstrap4 %}
+{% load static %}
+{# Load CSS and JavaScript #}
+
+{% bootstrap_css %}
+    
+{% block bootstrap4_extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}" />
+{% endblock %}
+
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block bootstrap4_content %}
+    <div class="container">
+        <h1>{% block title %}(no title){% endblock %}</h1>
+
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+        {% block content %}(no content){% endblock %}
+    </div>
+    {% block jquery %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% endblock %}
+{% endblock %}

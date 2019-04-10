@@ -1,0 +1,141 @@
+{% extends 'app/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}Lesson Plan{% endblock %}
+
+{% block content %}
+
+{# Display a form #}
+
+<h2>TEST 2</h2>
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {# This displays all the safety objectives as bulleted list and checkboxes #}
+    
+    {% bootstrap_form_errors form type='non_fields' %}
+    
+    {% bootstrap_field form.owner %}
+    {% bootstrap_field form.title %}
+    {% bootstrap_field form.course %}<small><a href="{% url 'course-create' %}">Create New &hellip;</a></small>
+    {% bootstrap_field form.content_objectives %}
+    {% bootstrap_field form.language_objectives %}
+    
+    <!-- Program Strands -->
+    <div class="accordian" id="accordionExample">
+        <!-- SAFETY OBJECTIVES -->
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <button class="btn btn-link" 
+                  type="button" 
+                  data-toggle="collapse" 
+                  data-target="#collapseOne" 
+                  aria-expanded="true" 
+                  aria-controls="collapseOne">
+            <h5>Safety Objectives</h5>
+          </button>
+        </div>
+        <div id="collapseOne" 
+             class="collapse" 
+             aria-labelledby="headingOne" 
+             data-parent="#accordionExample">
+            {% bootstrap_field form.safety_objectives field_class='card-body' show_label=False %}
+        </div>
+      </div><!-- /.card -->
+      <!-- TECHNICAL OBJECTIVES -->
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <button class="btn btn-link" 
+                  type="button" 
+                  data-toggle="collapse" 
+                  data-target="#collapseTwo" 
+                  aria-expanded="true" 
+                  aria-controls="collapseTwo">
+            <h5>Technical Objectives</h5>
+            <small>{{ lessonplan.course.program }}</small>
+          </button>
+        </div>
+        <div id="collapseTwo" 
+             class="collapse" 
+             aria-labelledby="headingTwo" 
+             data-parent="#accordionExample">
+            {% bootstrap_field form.technical_objectives field_class='card-body' show_label=False %}
+        </div>
+      </div><!-- /.card -->
+      <!-- EMPLOYABILITY OBJECTIVES -->
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <button class="btn btn-link" 
+                  type="button" 
+                  data-toggle="collapse" 
+                  data-target="#collapseThree" 
+                  aria-expanded="true" 
+                  aria-controls="collapseThree">
+            <h5>Employability Objectives</h5>
+          </button>
+        </div>
+        <div id="collapseThree" 
+             class="collapse" 
+             aria-labelledby="headingThree" 
+             data-parent="#accordionExample">
+            {% bootstrap_field form.employability_objectives field_class='card-body' show_label=False %}
+        </div>
+      </div><!-- /.card -->
+      <!-- MANAGEMENT OBJECTIVES -->
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <button class="btn btn-link" 
+                  type="button" 
+                  data-toggle="collapse" 
+                  data-target="#collapseFour" 
+                  aria-expanded="true" 
+                  aria-controls="collapseFour">
+            <h5>Management Objectives</h5>
+          </button>
+        </div>
+        <div id="collapseFour" 
+             class="collapse" 
+             aria-labelledby="headingFour" 
+             data-parent="#accordionExample">
+            {% bootstrap_field form.management_objectives field_class='card-body' show_label=False %}
+        </div>
+      </div><!-- /.card -->
+      <!-- TECHNOLOGY OBJECTIVES -->
+      <div class="card">
+        <div class="card-header" id="headingFive">
+          <button class="btn btn-link" 
+                  type="button" 
+                  data-toggle="collapse" 
+                  data-target="#collapseFive" 
+                  aria-expanded="true" 
+                  aria-controls="collapseFive">
+            <h5>Technology Objectives</h5>
+          </button>
+        </div>
+        <div id="collapseFive" 
+             class="collapse" 
+             aria-labelledby="headingFive" 
+             data-parent="#accordionExample">
+            {% bootstrap_field form.technology_objectives field_class='card-body' show_label=False %}
+        </div>
+      </div><!-- /.card -->
+    </div><!-- /.accordian -->
+    
+    {% bootstrap_field form.lesson_outline %}
+    {% bootstrap_field form.resources %}
+    
+    {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+
+</form>
+<hr>
+
+
+{% endblock %}
+
+{% block bootstrap4_extra_script %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+  
+  <script src="{% static 'app/js/textarea-wysiwyg.js' %}"></script>
+  <script src="{% static 'app/js/my-checkboxes.js' %}"></script>
+{% endblock %}

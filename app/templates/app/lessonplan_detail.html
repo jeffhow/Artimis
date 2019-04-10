@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Lesson Plan View{% endblock %}
+
+
+{% block content %}
+{% autoescape off %}
+
+    <p>Owner: {{ lessonplan.owner }}</p>
+    <p>title: {{ lessonplan.title }}</p>
+    <p>course: {{ lessonplan.course }}</p>
+    <p>content_objectives: {{ lessonplan.content_objectives }}</p>
+    <p>language_objectives: {{ lessonplan.language_objectives }}</p>
+    <p>safety_objectives: {{ lessonplan.safety_objectives }}</p>
+    <p>technical_objectives: {{ lessonplan.technical_objectives }}</p>
+    <p>employability_objectives: {{ lessonplan.employability_objectives }}</p>
+    <p>management_objectives: {{ lessonplan.management_objectives }}</p>
+    <p>technology_objectives: {{ lessonplan.technology_objectives }}</p>
+    <p>lesson_outline: {{ lessonplan.lesson_outline }}</p>
+    <p>resource_links: {{ lessonplan.resource_links }}</p>
+{% endautoescape %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}Course{% endblock %}
+
+{% block content %}
+
+{# Display a form #}
+
+{% bootstrap_form form %}
+
+{% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+
+{% endblock %}
+{% block bootstrap4_extra_script %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+  
+  <script src="{% static 'app/js/textarea-wysiwyg.js' %}"></script>
+  <script src="{% static 'app/js/my-checkboxes.js' %}"></script>
+{% endblock %}

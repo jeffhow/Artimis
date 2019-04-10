@@ -1,0 +1,5 @@
+@todo:
+1) Implement my own base bootstrap4
+2) manually code lesson_plan_detail.html and lesson_plan_update.html
+    a) lesson_plan_update.html: Add https://css-tricks.com/indeterminate-checkboxes/
+    b) Decide to use modal or tabs or accordian for checkboxes. --Definately Accordion for strands
